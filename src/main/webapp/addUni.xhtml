@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head/>
+<h:body>
+    <h2>Add University</h2>
+    <div>
+        <h3>ADD Universities</h3>
+        <ui:repeat value="#{universityController.allUniversities}" var="item">
+
+            <table border="1">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>City</th>
+                    <th>Student IDs</th>
+                    <th>Course IDs</th>
+                </tr>
+                </thead>
+                <tr>
+                    <td><h:outputText value="#{item.id}"/></td>
+                    <td><h:outputText value="#{item.name}"/></td>
+                    <td><h:outputText value="#{item.city}"/></td>
+                    <td><ui:repeat value="${item.studentSet}" var="student" varStatus="loop">
+                        #{student.id}#{not loop.last ? ', ' : ''}
+                    </ui:repeat></td>
+                    <td><ui:repeat value="${item.courseSet}" var="course" varStatus="loop">
+                        #{course.courseName}#{not loop.last ? ', ' : ''}
+                    </ui:repeat></td>
+                </tr>
+            </table>
+        </ui:repeat>
+    </div>
+    <div>
+        <h:form id="university-form">
+            <h:panelGrid>
+                <h:outputLabel for="university_name">Name</h:outputLabel>
+                <h:inputText id="university_name" value="${universityController.university.name}"/>
+                <h:outputLabel for="university_city">City</h:outputLabel>
+                <h:inputText id="university_city" value="${universityController.university.city}"/>
+                <h:commandButton id="add-university-button" value="Add" action="#{universityController.createUniversity}"/>
+            </h:panelGrid>
+        </h:form>
+    </div>
+    <h:link outcome="/index" value="Back"/>
+
+
+
+</h:body>
+</html>

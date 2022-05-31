@@ -1,0 +1,10 @@
+<datasources>
+    <datasource jndi-name="lab1pskDataSource" pool-name="lab1pskDataSource">
+        <driver>h2</driver>
+        <connection-url>jdbc:h2:~/h2database/lab1pskDataSource;AUTO_SERVER=TRUE</connection-url>
+        <security>
+            <user-name>sa</user-name>
+            <password>sa</password>
+        </security>
+    </datasource>
+</datasources>

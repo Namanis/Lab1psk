@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head/>
+<h:body>
+    <h2>Add University</h2>
+    <div>
+        <h3>ADD Courses</h3>
+        <ui:repeat value="#{courseController.allCourses}" var="item">
+
+            <table border="1">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Course title</th>
+                    <th>University</th>
+                    <th>Student IDs</th>
+                </tr>
+                </thead>
+                <tr>
+                    <td><h:outputText value="#{item.id}"/></td>
+                    <td><h:outputText value="#{item.courseName}"/></td>
+                    <td><h:outputText value="#{item.university.name}"/></td>
+                    <td><ui:repeat value="${item.studentSet}" var="student" varStatus="loop">
+                        #{student.id}#{not loop.last ? ', ' : ''}
+                    </ui:repeat></td>
+                </tr>
+            </table>
+        </ui:repeat>
+    </div>
+
+    <div>
+        <h:form id="course-form">
+            <h:panelGrid>
+                <h:outputLabel for="course_courseName">Course title</h:outputLabel>
+                <h:inputText id="course_courseName" value="${courseController.course.courseName}"/>
+                <h:outputLabel for="course_university">University</h:outputLabel>
+                <h:selectOneMenu id="course_university" value="#{courseController.universityId}">
+                    <f:selectItems value="#{universityController.allUniversities}" var="u"
+                                   itemLabel="#{u.name}" itemValue="#{u.id}"/>
+                </h:selectOneMenu>
+                <h:commandButton id="add-course-button" value="Add" action="#{courseController.createCourse}"/>
+            </h:panelGrid>
+        </h:form>
+    </div>
+    <h:link outcome="/index" value="Back"/>
+
+
+
+</h:body>
+</html>

@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="Lab1psk:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>Lab1psk</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="psk1.war">
+      <element id="artifact" artifact-name="Lab1psk:war exploded" />
+    </root>
+  </artifact>
+</component>

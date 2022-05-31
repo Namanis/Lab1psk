@@ -6,13 +6,11 @@
                       http://xmlns.jcp.org/xml/ns/javaee/beans_1_1.xsd"
         bean-discovery-mode="annotated">
 
-    <interceptors>
-        <class>com.example.lab1psk.interceptors.MethodLogger</class>
-    </interceptors>
+<!--    <interceptors>-->
+<!--        <class>com.example.lab1psk.interceptors.MethodLogger</class>-->
+<!--    </interceptors> -->
     <decorators>
         <class>com.example.lab1psk.decorators.StudentPersonalIdGeneratorDecorator</class>
     </decorators>
- <!--   <alternatives>
-        <class>com.example.lab1psk.services.TimeConverterAlt</class>
-    </alternatives> -->
+
 </beans>

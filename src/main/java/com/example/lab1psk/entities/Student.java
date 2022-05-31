@@ -29,6 +29,10 @@ public class Student {
     @Column(name = "lname", nullable = false)
     private String lname;
 
+    @Column(name = "personalId")
+    private String personalId;
+
+
 
     @ManyToOne
     @JoinColumn(name= "university_id")
